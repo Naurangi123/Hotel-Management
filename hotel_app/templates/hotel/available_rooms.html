@@ -1,0 +1,12 @@
+
+{% block content %}
+
+{% for room in rooms %}
+    <div class="room">
+        <h3>{{ room.room_type }}</h3>
+        <p>Price: {{ room.price }}</p>
+        <a href="{% url 'book_room' room.id %}">Book Now</a>
+    </div>
+{% endfor %}
+
+{% endblock %}

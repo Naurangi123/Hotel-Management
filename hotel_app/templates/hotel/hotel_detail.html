@@ -1,0 +1,25 @@
+<h1>{{ hotel.name }}</h1>
+<p>{{ hotel.address }}</p>
+<p>{{ hotel.description }}</p>
+
+<h2>Rooms:</h2>
+
+{% if rooms|length == 0 %}
+    <p>No rooms available at this hotel.</p>
+{% else %}
+    <ul>
+        {% for room in rooms %}
+            <li>
+                {{ room.room_type }} - ₹{{ room.price }}
+                <p>Status: 
+                    {% if not room.available %}
+                        <span style="color: red;">Not Available</span>
+                    {% else %}
+                        <span style="color: green;">Available</span>
+                    {% endif %}
+                </p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
