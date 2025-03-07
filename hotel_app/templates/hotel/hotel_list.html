@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/hotel.css' %}">
-    <title>Hotel List</title>
-</head>
-<body>
-
+{% extends './base.html' %}
+{% block content %}
 <header>
     <h1>Hotel List</h1>
     <p>Find the best hotels for your stay</p>
 </header>
-
 <div class="hotel-list">
     {% for hotel in hotels %}
     <div class="hotel">
@@ -31,6 +21,4 @@
     {% endfor %}
 
 </div>
-
-</body>
-</html>
+{% endblock %}

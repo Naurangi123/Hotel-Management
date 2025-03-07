@@ -1,0 +1,8 @@
+{% extends 'hotel/base.html' %}
+{% block content %}
+{% for room in booked_room %}
+    <h1>{{ room.user }}</h1>
+    <h3>{{ room.room.room_type }}</h3>
+    <h2>{{ room.room.available }}</h2>
+{% endfor %}
+{% endblock %}

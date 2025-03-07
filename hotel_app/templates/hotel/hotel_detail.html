@@ -1,11 +1,12 @@
+{% extends 'hotel/base.html' %}
+{% block content %}
 <h1>{{ hotel.name }}</h1>
 <p>{{ hotel.address }}</p>
 <p>{{ hotel.description }}</p>
-
 <h2>Rooms:</h2>
-
 {% if rooms|length == 0 %}
     <p>No rooms available at this hotel.</p>
+    <a class="add-room" href="{% url 'add_room' hotel.id %}">Add Room</a>
 {% else %}
     <ul>
         {% for room in rooms %}
@@ -13,13 +14,17 @@
                 {{ room.room_type }} - ₹{{ room.price }}
                 <p>Status: 
                     {% if not room.available %}
-                        <span style="color: red;">Not Available</span>
+                        <span class="not-available" style="color: red;">Not Available</span>
                     {% else %}
-                        <span style="color: green;">Available</span>
+                        <span class="available" style="color: green;">Available</span>
+                        <a href="{% url 'room_booking' hotel.id room.id %}">Book Room</a>
+                        
                     {% endif %}
                 </p>
             </li>
         {% endfor %}
     </ul>
 {% endif %}
+<a class="room-available" href="{% url 'available_rooms_by_hotel' hotel.id %}">Room Available</a>
+{% endblock %}
 

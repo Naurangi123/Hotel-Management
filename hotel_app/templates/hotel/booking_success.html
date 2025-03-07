@@ -1,1 +1,6 @@
-<h1>Bookin success</h1>
+{% extends 'hotel/base.html' %}
+{% block content %}
+<h1>Your {{ room.room_type }} Room Booking successful!</h1>
+<p>{{ room.room_type }}</p>
+<p>{{ room.status }}</p>
+{% endblock %}

@@ -69,3 +69,78 @@ header {
 .book-button:hover {
     background-color: #555;
 }
+
+h1 {
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+}
+
+p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-top: 30px;
+    color: #444;
+}
+
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+li:hover {
+    background-color: #f1f1f1;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Available and not available status */
+span {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+span.available {
+    color: green;
+}
+
+span.not-available {
+    color: red;
+}
+
+a.add-room, a.room-available {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+a.add-room:hover, a.room-available:hover {
+    background-color: #0056b3;
+}

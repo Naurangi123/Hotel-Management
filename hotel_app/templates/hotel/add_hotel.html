@@ -1,12 +1,6 @@
-<!-- add_room.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Room</title>
-</head>
-<body>
+{% extends 'hotel/base.html' %}
+
+{% block content %}
     <h1>Add Room to {{ hotel.name }}</h1>
     
     {% if messages %}
@@ -22,5 +16,4 @@
         {{ form.as_p }} 
         <button type="submit">Add Room</button>
     </form>
-</body>
-</html>
+    {% endblock %}

@@ -1,1 +1,11 @@
+{% extends 'hotel/base.html' %}
+{% block content %}
 <h1>User Booking History</h1>
+{% for booked_room in booking %}
+    {{ room.user }}
+    {{ room.room_type }}
+    {{ room.check_in }}
+    {{ rooom .check_out }}
+    {{ room.status }}
+{% endfor %}
+{% endblock %}
