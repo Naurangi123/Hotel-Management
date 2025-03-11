@@ -1,8 +1,17 @@
-{% extends 'hotel/base.html' %}
 {% block content %}
-{% for room in booked_room %}
-    <h1>{{ room.user }}</h1>
-    <h3>{{ room.room.room_type }}</h3>
-    <h2>{{ room.room.available }}</h2>
-{% endfor %}
-{% endblock %}
+    <h1>Booked Rooms</h1>
+    <ul>
+        {% for room in rooms %}
+            <li>
+                Room: {{ room.room_type }} - {{ room.hotel.name}}
+                Check-in: {{ room.check_in }} - 
+                Check-out: {{ room.check_out_time }} - 
+                Total Charges: {{ room.room.price }} ₹
+                {% if booking.status == 'Confirmed' %}
+                    <a href="{% url 'check_out_room' booking.room.id %}">Check Out</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'hotel_list' %}">Back to Hotel List</a>
+    {% endblock %}

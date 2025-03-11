@@ -1,7 +1,13 @@
-{% extends 'hotel/base.html' %}
 {% block content %}
-    <h1>Welcome to Room {{ room.id }}</h1>
-    <p>Room Type: {{ room.room_type }}</p>
-    <p>Price: ${{ room.price }}</p>
-    <p>Status: {{ room.status }}</p>
+    <h1>Check-in for Room: {{ room.name }}</h1>
+    <p>Room details:</p>
+    <ul>
+        <li>Price: {{ room.price }} USD</li>
+        <li>Availability: {% if room.available %} Available {% else %} Not Available {% endif %}</li>
+    </ul>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Check-in</button>
+    </form>
+    <a href="{% url 'booked_rooms' %}">Back to Booked Rooms</a>
 {% endblock %}

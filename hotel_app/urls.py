@@ -1,15 +1,18 @@
-from . import views
 from django.urls import path
-
+from . import views
 
 urlpatterns = [
-    path('', views.hotel_list, name='home'),
-    path('hotel/<int:hotel_id>/',views.hotel_detail,name='hotel_detail'),
-    path('hotel/<int:hotel_id>/add_room',views.add_room,name='add_room'),
-    path('hotel/<int:hotel_id>/available_rooms',views.available_rooms,name='available_rooms'),
-    path('hotel/<int:hotel_id>/room/<int:room_id>/',views.room_booking,name='room_booking'),
-    path('hotel/<int:room_id>/room_check_out/',views.room_check_out,name="room_check_out"),
-    path('hotel/booked_room/',views.booked_room,name='booked_room'),
-    path('rooms/available/', views.available_rooms, name='available_rooms'),
-    path('rooms/available/<int:hotel_id>/', views.available_rooms, name='available_rooms_by_hotel'),
+    path('', views.hotel_list, name='hotel_list'),
+    path('hotel/<int:hotel_id>/', views.hotel_detail, name='hotel_detail'),
+    path('hotel/create/', views.hotel_create, name='hotel_create'),
+    path('hotel/<int:hotel_id>/update/', views.hotel_update, name='hotel_update'),
+    
+    path('hotel/<int:hotel_id>/rooms/', views.available_rooms, name='available_rooms'),
+    path('hotel/<int:hotel_id>/room/add/', views.add_room, name='add_room'),
+    
+    path('hotel/<int:hotel_id>/room/<int:room_id>/book/', views.room_booking, name='room_booking'),
+    path('booked-rooms/', views.booked_rooms, name='booked_rooms'),
+    path('room/<int:room_id>/checkout/', views.check_out_room, name='check_out_room'),
+    
+    path('booking-history/<int:user_id>/', views.booking_history, name='booking_history'),
 ]

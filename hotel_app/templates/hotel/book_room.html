@@ -2,9 +2,13 @@
 
 {% block content %}
 <h1>Book A Room</h1>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Book Room</button>
-</form>
+<div class="room-form">
+    <div class="room-top-form">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Book Room</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

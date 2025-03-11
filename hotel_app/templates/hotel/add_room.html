@@ -1,18 +1,16 @@
 {% extends 'hotel/base.html' %}
 {% block content %}
-<h1>Add Room to {{ hotel.name }}</h1>
-
-{% if messages %}
-<ul>
-    {% for message in messages %}
-    <li>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Add Room</button>
-</form>
+<div class="room-form">
+    <div class="room-top-main">
+        <h2>Room {{ hotel.name }}</h2>
+        <a href="{% url 'hotel_detail' hotel.id %}">Back</a>
+    </div>
+    <div class="room-top-form">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Add Room</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

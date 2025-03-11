@@ -8,4 +8,26 @@
     {{ rooom .check_out }}
     {{ room.status }}
 {% endfor %}
-{% endblock %}
+{% endblock %}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking History</title>
+</head>
+<body>
+    <h1>Your Booking History</h1>
+    <ul>
+        {% for booking in booking %}
+            <li>
+                Hotel: {{ booking.room.hotel.name }} - 
+                Room: {{ booking.room.name }} - 
+                Check-in: {{ booking.check_in }} - 
+                Check-out: {{ booking.check_out_time }} - 
+                Status: {{ booking.status }}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'hotel_list' %}">Back to Hotel List</a>
+</body>
+</html>

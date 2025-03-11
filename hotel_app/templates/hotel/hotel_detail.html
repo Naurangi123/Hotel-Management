@@ -1,30 +1,44 @@
 {% extends 'hotel/base.html' %}
+{% load static %}
 {% block content %}
-<h1>{{ hotel.name }}</h1>
-<p>{{ hotel.address }}</p>
-<p>{{ hotel.description }}</p>
-<h2>Rooms:</h2>
-{% if rooms|length == 0 %}
-    <p>No rooms available at this hotel.</p>
-    <a class="add-room" href="{% url 'add_room' hotel.id %}">Add Room</a>
-{% else %}
-    <ul>
-        {% for room in rooms %}
-            <li>
-                {{ room.room_type }} - ₹{{ room.price }}
-                <p>Status: 
+<div class="hotel-detail">
+    <div class="hotel-container">
+        <div class="hotel-img">
+            <img src="{{ hotel.hotel_image.url }}" alt="{{ hotel.name }}">
+        </div>
+        <div class="hotel-information">
+            <h1>{{ hotel.name }}</h1>
+            <p><i class="fa-solid fa-location-dot"></i> {{ hotel.address }}</p>
+            <p><i class="fa-solid fa-file-waveform"></i> {{ hotel.description }}</p>
+            <p><i class="fa-regular fa-star"></i> {{ hotel.rating }}/5</p>
+        </div>
+    </div>
+    <div class="hotel-rooms">
+        <h2>Rooms:</h2>
+        {% if rooms|length == 0 %}
+        <p>No rooms available at this hotel.</p>
+        <a class="add-room" href="{% url 'add_room' hotel.id %}">Add Room</a>
+        {% else %}
+        <div class="room-info">
+            {% for room in rooms %}
+            <div class="room-detail">
+                <div class="room-img">
+                    <img src="{{ room.room_image.url }}" alt="{{ room.name }}">
+                <h2>Type: {{ room.room_type }} - <span>₹{{ room.price }}</span></h2>
+                <p>Status:
                     {% if not room.available %}
-                        <span class="not-available" style="color: red;">Not Available</span>
+                    <span class="not-available">Not Available</span>
+                    <a href="{% url 'check_out_room' room.id %}">Check Out Room</a>
                     {% else %}
-                        <span class="available" style="color: green;">Available</span>
-                        <a href="{% url 'room_booking' hotel.id room.id %}">Book Room</a>
-                        
+                    <span class="available">Available</span>
+                    <a href="{% url 'room_booking' hotel.id room.id %}">Book Room</a>
                     {% endif %}
                 </p>
-            </li>
-        {% endfor %}
-    </ul>
-{% endif %}
-<a class="room-available" href="{% url 'available_rooms_by_hotel' hotel.id %}">Room Available</a>
+            </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
-

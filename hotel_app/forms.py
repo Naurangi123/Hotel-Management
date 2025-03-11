@@ -17,9 +17,4 @@ class RoomForm(forms.ModelForm):
 class BookRoomForm(forms.ModelForm):
     class Meta:
         model=Booking
-        fields=['user','room','check_in','check_out','status']
-        
-class BookRoomForm(forms.ModelForm):
-    class Meta:
-        model=Booking
-        fields=['user','room','check_in','check_out','status']
+        fields=['user','room','check_in']
