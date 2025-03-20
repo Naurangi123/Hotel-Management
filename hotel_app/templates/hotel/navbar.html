@@ -1,15 +1,17 @@
 {% block content %}
     <nav>
-        <ul>
+        <ul class="nav_links">
             <li><a href="{% url 'index' %}">Home</a></li>
-            <li><a href="{% url 'hotel_list' %}">Hotel</a></li>
+            <li><a href="{% url 'hotel_list' %}">Hotels</a></li>
             <li><a href="{% url 'room_list' %}">Rooms</a></li>
-            <li><a href="{% url 'hotel_list' %}">Settings</a></li>
-            <form action="" method="POST">
-                {% csrf_token %}
-                <input type="text" name="search" placeholder="Search Hotel...">
-                <input type="submit" value="Search">
-            </form>
+            {% comment %}
+            <li><a href="{% url 'settings' %}">Settings</a></li>
+            {% endcomment %}
         </ul>
+        <form action="{% url 'room_list' %}" method="POST" class="search_form">
+            {% csrf_token %}
+            <input type="text" name="search" placeholder="Search Hotel...">
+            <input type="submit" value="Search">
+        </form>
     </nav>
 {% endblock %}

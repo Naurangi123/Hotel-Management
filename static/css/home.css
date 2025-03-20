@@ -1,4 +1,146 @@
-.container{
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    background: linear-gradient(to left, #e16a62, #72e370aa);
+.header_container {
+    width: inherit;
+    margin: 0 10px 0 10px;
+    padding: 10px;
+}
+
+.header_container>h1 {
+    font-size: 2em;
+    color: #ec2222b8;
+}
+
+.header_container>header>p {
+    font-size: 1.2em;
+    color: #9a3e9ad1;
+    margin-bottom: 10px;
+    text-align: justify;
+}
+
+.card {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.card>.card_inside {
+    flex: 1;
+    background: #959396;
+    height: 300px;
+    margin: 5px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(101, 99, 99, 0.525);
+}
+
+.card_image_container {
+    padding: 20px;
+    text-align: justify;
+    border-radius: 10px;
+}
+
+.card_heading h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.cards {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+}
+
+.card_image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #959396;
+    margin: 15px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.card_image:hover {
+    transform: scale(1.05);
+}
+
+.card_image img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.card_content {
+    padding: 10px;
+}
+
+.card_content p {
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
+}
+
+
+footer {
+    background: #2c3e50;
+    color: white;
+    padding: 40px 0;
+    font-family: Arial, sans-serif;
+}
+
+.footer_container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.footer_container div {
+    flex: 1;
+    min-width: 220px;
+    margin: 10px;
+}
+
+.footer_container h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #f39c12;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.footer_container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer_container ul li {
+    margin: 8px 0;
+}
+
+.footer_container ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer_container ul li a:hover {
+    color: #f39c12;
+}
+
+.footer_bottom {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #f39c12;
 }

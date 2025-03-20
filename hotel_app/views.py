@@ -2,7 +2,6 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models import Avg
-from django.utils import timezone
 from datetime import datetime
 from .models import Room, Hotel, Booking
 from .forms import HotelForm, RoomForm, BookRoomForm
@@ -30,11 +29,8 @@ def hotel_detail(request, hotel_id):
     
     average_rating = hotel.rating
     
-    # Separate integer and decimal parts of the rating
     full_stars = int(average_rating)
-    has_half_star = (average_rating % 1) >= 0.5  # Check if there's a half star
-    
-    # Create the range for full and empty stars
+    has_half_star = (average_rating % 1) >= 0.5  
     full_star_range = range(full_stars)
     empty_star_range = range(full_stars, 5)
     context= {
@@ -110,27 +106,40 @@ def room_booking(request, hotel_id, room_id):
         form = BookRoomForm()
     return render(request, 'hotel/book_room.html', {'hotel': hotel, 'room': room, 'form': form})
 
-def booked_rooms(request,room_id):
-    rooms = Booking.objects.select_related('room').get(id=room_id)
+def booked_rooms(request):
+    rooms = Booking.objects.select_related('room').all()
     return render(request, 'hotel/booked_room.html', {'rooms': rooms})
 
 def check_out_room(request, room_id):
-    booking = get_object_or_404(Booking, room_id=room_id, status='Confirmed')
-    booking.status = 'Checked Out'
-    booking.check_out_time = timezone.now()
-    booking.total_charges = calculate_total_charges(booking)
-    booking.room.available = True
-    booking.room.save()
-    booking.save()
-    messages.success(request, "Checked out successfully!")
+    try:
+        booking = Booking.objects.get(room_id=room_id, status='Confirmed')
+        booking.status = 'Checked Out'
+        booking.check_out_time = datetime.now().strftime("%Y-%m-%d")
+        booking.total_charges = calculate_total_charges(booking)
+        booking.room.available = True
+        booking.room.save()
+        booking.save()
+        messages.success(request, "Checked out successfully!")
+    except Booking.DoesNotExist:
+        messages.error(request, "No active booking found for this room.")
     return redirect('booked_rooms')
+
 
 def booking_history(request, user_id):
     bookings = Booking.objects.filter(user_id=user_id)
     return render(request, 'hotel/booking_history.html', {'bookings': bookings})
 
+from django.utils.timezone import localtime
+
 def calculate_total_charges(booking):
-    if not booking.check_in or not booking.check_out_time:
+    if not booking.check_in or not booking.check_out:
         return 0
-    nights_stayed = max((booking.check_out_time - booking.check_in).days, 1)
-    return nights_stayed * booking.room.price
+
+    check_in = localtime(booking.check_in)
+    check_out = localtime(booking.check_out)
+
+    stay_duration = check_out - check_in
+    nights_stayed = max(stay_duration.total_seconds() / (24 * 3600), 1)
+
+    return round(nights_stayed * booking.room.price, 2)
+

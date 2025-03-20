@@ -7,23 +7,22 @@
             <img src="{{ hotel.hotel_image.url }}" alt="{{ hotel.name }}">
         </div>
         <div class="hotel-information">
-            <h1>{{ hotel.name }}</h1>
-            <p><i class="fa-solid fa-location-dot"></i> {{ hotel.address }}</p>
-            <p><i class="fa-solid fa-file-waveform"></i> {{ hotel.description }}</p>
-            {% comment %}
-            <p><i class="fa-regular fa-star"></i> {{ hotel.rating }}/5</p>
-            {% endcomment %}
-            <p class="half-star">
-                {% for i in full_star_range %}
-            <span style="color: gold;">&#9733;</span> <!-- Full star -->
-        {% endfor %}
-
-        <!-- Half star (if applicable) -->
-        {% if has_half_star %}
-            <span style="color: gold;">&#9734;</span> <!-- Half-filled star -->
-        {% endif %}
-            </p>
-            
+            <div class="information_hotel">
+                <h1>{{ hotel.name }}</h1>
+                <p><i class="fa-solid fa-location-dot"></i> {{ hotel.address }}</p>
+                <p><i class="fa-solid fa-file-waveform"></i> {{ hotel.description }}</p>
+                {% comment %}
+                <p><i class="fa-regular fa-star"></i> {{ hotel.rating }}/5</p>
+                {% endcomment %}
+                <p class="half-star">
+                    {% for i in full_star_range %}
+                    <span style="color: gold;">&#9733;</span>
+                    {% endfor %}
+                    {% if has_half_star %}
+                    <span style="color: gold;">&#9734;</span>
+                    {% endif %}
+                </p>
+            </div>
         </div>
     </div>
     <div class="hotel-rooms">

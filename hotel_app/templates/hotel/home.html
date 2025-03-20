@@ -28,48 +28,82 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, nobis.</p>
         </div>
     </div>
-    <div class="card_image">
+    <div class="card_image_container">
         <div class="card_heading">
             <h1>Your Choice</h1>
         </div>
-        <div class="card_image">
-            <div>
+        <div class="cards">
+            <div class="card_image">
                 <img src="{% static '/images/img1.jpg' %}" alt="imgs">
+                <div class="card_content">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                        Quidem totam nulla aspernatur minima possimus consectetur?</p>
+                </div>
             </div>
-            <div class="card_content">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                     Quidem totam nulla aspernatur minima possimus consectetur?</p>
+            <div class="card_image">
+                <div>
+                    <img src="{% static '/images/img1.jpg' %}" alt="imgs">
+                </div>
+                <div class="card_content">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                        Quidem totam nulla aspernatur minima possimus consectetur?</p>
+                </div>
             </div>
-        </div>
-        <div class="card_image">
-            <div>
-                <img src="{% static '/images/img1.jpg' %}" alt="imgs">
-            </div>
-            <div class="card_content">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                     Quidem totam nulla aspernatur minima possimus consectetur?</p>
-            </div>
-        </div>
-        <div class="card_image">
-            <div>
-                <img src="{% static '/images/img1.jpg' %}" alt="imgs">
-            </div>
-            <div class="card_content">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                     Quidem totam nulla aspernatur minima possimus consectetur?</p>
+            <div class="card_image">
+                <div>
+                    <img src="{% static '/images/img1.jpg' %}" alt="imgs">
+                </div>
+                <div class="card_content">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                        Quidem totam nulla aspernatur minima possimus consectetur?</p>
+                </div>
             </div>
         </div>
     </div>
     <footer>
-        <p>Copyright © 2025 Your Favourite Place. All rights reserved.</p>
-        <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">Rooms</a></li>
-            <li><a href="">Settings</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Policy</a></li>
-        </ul>
-    </footer>
+        <div class="footer_container">
+            <div class="footer_about">
+                <h3>About Us</h3>
+                <p>Welcome to Your Favourite Place, where luxury meets comfort. Enjoy a seamless booking experience and unforgettable stays.</p>
+            </div>
+            
+            <div class="footer_links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Rooms</a></li>
+                    <li><a href="">Amenities</a></li>
+                    <li><a href="">Gallery</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer_services">
+                <h3>Our Services</h3>
+                <ul>
+                    <li><a href="">Room Booking</a></li>
+                    <li><a href="">Restaurant</a></li>
+                    <li><a href="">Spa & Wellness</a></li>
+                    <li><a href="">Event Management</a></li>
+                    <li><a href="">Travel Assistance</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer_policy">
+                <h3>Policies</h3>
+                <ul>
+                    <li><a href="">Privacy Policy</a></li>
+                    <li><a href="">Terms & Conditions</a></li>
+                    <li><a href="">Cancellation Policy</a></li>
+                    <li><a href="">Refund Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="footer_bottom">
+            <p>Copyright © 2025 Your Favourite Place. All rights reserved.</p>
+        </div>
+    </footer>    
 </div>
 
 {% endblock %}
