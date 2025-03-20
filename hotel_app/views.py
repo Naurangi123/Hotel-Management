@@ -1,19 +1,50 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.db.models import Q
+from django.db.models import Avg
 from django.utils import timezone
 from datetime import datetime
 from .models import Room, Hotel, Booking
 from .forms import HotelForm, RoomForm, BookRoomForm
 
+
+def index(request):
+    return render(request, 'hotel/home.html')
+
 def hotel_list(request):
     hotels = Hotel.objects.all()
     return render(request, 'hotel/hotel_list.html', {'hotels': hotels})
 
+def hotel_rooms(request):
+    if request.method == 'POST':
+        query = request.POST.get('search')
+        hotels = Hotel.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
+        return render(request, 'hotel/hotel_list.html', {'hotels': hotels})
+    else:
+        rooms=Room.objects.select_related('hotel').all()
+        return render(request, 'hotel/hotel_rooms.html',{'rooms':rooms})
+
 def hotel_detail(request, hotel_id):
     hotel = get_object_or_404(Hotel.objects.prefetch_related('rooms'), id=hotel_id)
     rooms = hotel.rooms.all()
-    return render(request, 'hotel/hotel_detail.html', {'hotel': hotel, 'rooms': rooms})
+    
+    average_rating = hotel.rating
+    
+    # Separate integer and decimal parts of the rating
+    full_stars = int(average_rating)
+    has_half_star = (average_rating % 1) >= 0.5  # Check if there's a half star
+    
+    # Create the range for full and empty stars
+    full_star_range = range(full_stars)
+    empty_star_range = range(full_stars, 5)
+    context= {
+        'hotel': hotel,
+        'rooms': rooms,
+        'full_star_range': full_star_range,
+        'has_half_star': has_half_star,
+        'empty_star_range': empty_star_range,
+        }
+    return render(request, 'hotel/hotel_detail.html',context)
 
 def available_rooms(request, hotel_id=None):
     hotel = get_object_or_404(Hotel, id=hotel_id) if hotel_id else None
@@ -70,7 +101,7 @@ def room_booking(request, hotel_id, room_id):
             booking = form.save(commit=False)
             booking.room = room
             booking.user = request.user
-            booking.check_in = timezone.now()
+            booking.check_in = timezone.now().date()
             booking.status = 'Confirmed'
             booking.save()
             messages.success(request, "Booking Successful!")

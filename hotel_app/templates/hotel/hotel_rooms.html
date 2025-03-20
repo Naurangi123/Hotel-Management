@@ -1,0 +1,22 @@
+{% extends './base.html' %}
+{% block content %}
+<div class="hotel-list">
+    {% for room in rooms %}
+    <div class="hotel">
+        {% if room.room_image %}
+            <img src="{{ room.room_image.url }}" alt="{{ room.room_type }}">
+        {% endif %}
+        <div class="hotel-info">
+            <div class="hotel-name">{{ room.hotel.name }}</div>
+            <p class="hotel-description">{{ room.room_type }}</p>
+            <p class="hotel-description">{{ room.hotel.rating }}/5</p>
+            <p class="hotel-description">{{ room.hotel.description }}/5</p>
+            <p class="hotel-description">₹ {{ room.price }}</p>
+            {% comment %}
+            <a href="{% url 'room_booking' %}" class="book-button">Book Now</a>
+            {% endcomment %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

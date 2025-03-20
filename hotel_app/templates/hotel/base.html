@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/hotel.css' %}">
     <link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <script src="https://kit.fontawesome.com/8b71382ea9.js" crossorigin="anonymous"></script>
     <title>Book Your Place/Room</title>
 </head>
 <body>
     {% include 'hotel/navbar.html' %}
-    
     {% block content %}
         {% if messages %}
             {% for message in messages %}
-                <p>{{ message }}</p>
+                <span>{{ message }}</span>
             {% endfor %}
         {% endif %}
     {% endblock %}

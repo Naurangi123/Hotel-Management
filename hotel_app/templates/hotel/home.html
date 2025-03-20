@@ -1,0 +1,75 @@
+{% extends 'hotel/base.html' %}
+{% block content %}
+{% load static %}
+<div class="container">
+    <div class="header_container">
+        <header>
+            <h1>Your Favroite Place</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Repudiandae, officia expedita quo nobis aspernatur quia iste,
+                maxime perferendis molestiae temporibus ducimus eligendi hic voluptatum qui,
+                tempore nulla! Repellat quo animi officiis magni est similique corrupti voluptatem?
+                Voluptates accusantium, ipsam quod dolore quos nemo quaerat ullam itaque ea! Cum eius,
+                voluptatem, sapiente aperiam a ex aliquid, dolorum expedita deserunt accusantium dignissimos.
+                Eveniet aliquam quaerat recusandae mollitia facere earum ducimus ullam, voluptate, expedita,
+                ut iste delectus esse magni facilis velit maiores. Quo quod voluptatibus, dignissimos deleniti
+                et aperiam laborum voluptas numquam necessitatibus tempora, accusantium nesciunt ad sequi
+                distinctio, voluptate doloremque consequatur animi!</p>
+        </header>
+    </div>
+    <div class="card">
+        <div class="card_inside">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, amet!</p>
+        </div>
+        <div class="card_inside">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, cumque.</p>
+        </div>
+        <div class="card_inside">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, nobis.</p>
+        </div>
+    </div>
+    <div class="card_image">
+        <div class="card_heading">
+            <h1>Your Choice</h1>
+        </div>
+        <div class="card_image">
+            <div>
+                <img src="{% static '/images/img1.jpg' %}" alt="imgs">
+            </div>
+            <div class="card_content">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                     Quidem totam nulla aspernatur minima possimus consectetur?</p>
+            </div>
+        </div>
+        <div class="card_image">
+            <div>
+                <img src="{% static '/images/img1.jpg' %}" alt="imgs">
+            </div>
+            <div class="card_content">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                     Quidem totam nulla aspernatur minima possimus consectetur?</p>
+            </div>
+        </div>
+        <div class="card_image">
+            <div>
+                <img src="{% static '/images/img1.jpg' %}" alt="imgs">
+            </div>
+            <div class="card_content">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                     Quidem totam nulla aspernatur minima possimus consectetur?</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Copyright © 2025 Your Favourite Place. All rights reserved.</p>
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Rooms</a></li>
+            <li><a href="">Settings</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Policy</a></li>
+        </ul>
+    </footer>
+</div>
+
+{% endblock %}
