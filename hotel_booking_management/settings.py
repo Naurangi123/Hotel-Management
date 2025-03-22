@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL='authapp.UserProfile'
 
 # Application definition
 
@@ -38,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_browser_reload',
+    'authapp',
     'hotel_app',
-    'authApp',
 ]
 
 MIDDLEWARE = [

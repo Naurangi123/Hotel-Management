@@ -10,29 +10,71 @@
 }
 
 .header_container>header>p {
-    font-size: 1.2em;
-    color: #9a3e9ad1;
+    font-size: 1.8em;
+    color: #0a4b09;
     margin-bottom: 10px;
     text-align: justify;
 }
 
 .card {
-    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    margin: 10px auto;
+    border-radius: 8px;
+    overflow: hidden;
     gap: 5px;
 }
 
-.card>.card_inside {
-    flex: 1;
-    background: #959396;
-    height: 300px;
-    margin: 5px;
+.card_inside-1, .card_inside-2, .card_inside-3 {
     padding: 20px;
+    color: rgb(102, 73, 73);
+    background-size: cover;  
+    background-position: center; 
+    background-repeat: no-repeat; 
+    text-align: center; 
+    height: 250px;
     border-radius: 10px;
-    box-shadow: 0 5px 10px rgba(101, 99, 99, 0.525);
+    width: 400px;
+    margin: 10px;
+    transition: 0.2s ease-in-out;
+    &:hover{
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        transition: 0.3s ease-in-out;
+        transform: scale(1.04);
+    }
 }
+
+.card_inside-1 {
+    background-image: url('../images/hotel_image1.jpg');
+}
+
+.card_inside-2 {
+    background-image: url('../images/hotel_image2.jpg'); 
+}
+
+.card_inside-3 {
+    background-image: url('../images/wang.jpg');
+}
+
+.card_inside-1 p, .card_inside-2 p, .card_inside-3 p {
+    position: relative;
+    z-index: 2;
+}
+
+.card_inside-1 img, .card_inside-2 img, .card_inside-3 img:hover{
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .card {
+        margin: 10px;
+    }
+
+    .card_inside-1, .card_inside-2, .card_inside-3 {
+        padding: 15px;
+    }
+}
+
 
 .card_image_container {
     padding: 20px;
@@ -41,8 +83,8 @@
 }
 
 .card_heading h1 {
-    font-size: 24px;
-    color: #333;
+    font-size: 30px;
+    color: #ff0000;
     margin-bottom: 20px;
     gap: 10px;
 }
@@ -60,7 +102,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #959396;
+    background:url("../images/paolo-nicolello.jpg");
     margin: 15px 0;
     padding: 15px;
     border-radius: 8px;
@@ -69,7 +111,7 @@
 }
 
 .card_image:hover {
-    transform: scale(1.05);
+    transform: scale(0.50);
 }
 
 .card_image img {

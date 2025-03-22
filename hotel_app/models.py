@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.conf import settings
 # Create your models here.
 
 
@@ -25,9 +26,9 @@ class Room(models.Model):
         return f"{self.room_type} - {self.hotel.name}"
 
 class Booking(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
-    check_in = models.DateField(default=timezone.now())
+    check_in = models.DateField()
     check_out = models.DateField(null=True, blank=True)
     status = models.CharField(max_length=20, default="Pending")  # Pending, Confirmed, Cancelled
     created_at = models.DateTimeField(auto_now_add=True)
@@ -46,7 +47,7 @@ class Payment(models.Model):
 
 class Review(models.Model):
     hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     rating = models.IntegerField()
     comment = models.TextField()
 

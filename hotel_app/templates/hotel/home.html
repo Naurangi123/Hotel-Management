@@ -5,68 +5,62 @@
     <div class="header_container">
         <header>
             <h1>Your Favroite Place</h1>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Repudiandae, officia expedita quo nobis aspernatur quia iste,
-                maxime perferendis molestiae temporibus ducimus eligendi hic voluptatum qui,
-                tempore nulla! Repellat quo animi officiis magni est similique corrupti voluptatem?
-                Voluptates accusantium, ipsam quod dolore quos nemo quaerat ullam itaque ea! Cum eius,
-                voluptatem, sapiente aperiam a ex aliquid, dolorum expedita deserunt accusantium dignissimos.
-                Eveniet aliquam quaerat recusandae mollitia facere earum ducimus ullam, voluptate, expedita,
-                ut iste delectus esse magni facilis velit maiores. Quo quod voluptatibus, dignissimos deleniti
-                et aperiam laborum voluptas numquam necessitatibus tempora, accusantium nesciunt ad sequi
-                distinctio, voluptate doloremque consequatur animi!</p>
+            <p>Welcome to favroite place, where luxury meets comfort in the heart of your place. Our hotel
+                offers a unique blend of modern amenities, elegant rooms, and exceptional service, ensuring an
+                unforgettable stay whether you're visiting for business or leisure. Enjoy stunning views, indulge in
+                delicious dining at Restaurant, and relax with top-notch facilities including a spa, fitness
+                center, and an outdoor pool. With a prime location near the city's top attractions and transport hubs,
+                **[Hotel Name]** is your perfect home away from home. Book your stay today and experience the perfect
+                blend of convenience, luxury, and style.</p>
         </header>
     </div>
     <div class="card">
-        <div class="card_inside">
+        <div class="card_inside-1">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, amet!</p>
         </div>
-        <div class="card_inside">
+        <div class="card_inside-2">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, cumque.</p>
         </div>
-        <div class="card_inside">
+        <div class="card_inside-3">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, nobis.</p>
         </div>
     </div>
-    <div class="card_image_container">
-        <div class="card_heading">
-            <h1>Your Choice</h1>
+    <div class="grid-container">
+        <div class="grid-item">
+            <img src="{% static './images/marvin-meyer.jpg' %}" alt="Image 1">
         </div>
-        <div class="cards">
-            <div class="card_image">
-                <img src="{% static '/images/img1.jpg' %}" alt="imgs">
-                <div class="card_content">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                        Quidem totam nulla aspernatur minima possimus consectetur?</p>
-                </div>
-            </div>
-            <div class="card_image">
-                <div>
-                    <img src="{% static '/images/img1.jpg' %}" alt="imgs">
-                </div>
-                <div class="card_content">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                        Quidem totam nulla aspernatur minima possimus consectetur?</p>
-                </div>
-            </div>
-            <div class="card_image">
-                <div>
-                    <img src="{% static '/images/img1.jpg' %}" alt="imgs">
-                </div>
-                <div class="card_content">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                        Quidem totam nulla aspernatur minima possimus consectetur?</p>
-                </div>
-            </div>
+        <div class="grid-item">
+            <img src="{% static './images/hotel_image2.jpg' %}" alt="Image 2">
+        </div>
+        <div class="grid-item">
+            <img src="{% static './images/hotel_image.jpg' %}" alt="Image 3">
+        </div>
+
+        <div class="grid-item full-span">
+            <img src="{% static './images/hotel_image3.jpg' %}" alt="Full Row Image">
+        </div>
+
+        <div class="grid-item">
+            <img src="{% static './images/marvin-meyer.jpg' %}" alt="Image 4">
+        </div>
+        <div class="grid-item">
+            <img src="{% static './images/brett-campbell.jpg' %}" alt="Image 5">
+        </div>
+        <div class="grid-item">
+            <img src="{% static './images/paolo-nicolello.jpg' %}" alt="Image 6">
+        </div>
+        <div class="grid-item full-span">
+            <img src="{% static './images/wang.jpg' %}" alt="Full Row Image">
         </div>
     </div>
     <footer>
         <div class="footer_container">
             <div class="footer_about">
                 <h3>About Us</h3>
-                <p>Welcome to Your Favourite Place, where luxury meets comfort. Enjoy a seamless booking experience and unforgettable stays.</p>
+                <p>Welcome to Your Favourite Place, where luxury meets comfort. Enjoy a seamless booking experience and
+                    unforgettable stays.</p>
             </div>
-            
+
             <div class="footer_links">
                 <h3>Quick Links</h3>
                 <ul>
@@ -77,7 +71,7 @@
                     <li><a href="">Contact</a></li>
                 </ul>
             </div>
-    
+
             <div class="footer_services">
                 <h3>Our Services</h3>
                 <ul>
@@ -88,7 +82,7 @@
                     <li><a href="">Travel Assistance</a></li>
                 </ul>
             </div>
-    
+
             <div class="footer_policy">
                 <h3>Policies</h3>
                 <ul>
@@ -99,11 +93,11 @@
                 </ul>
             </div>
         </div>
-    
+
         <div class="footer_bottom">
             <p>Copyright © 2025 Your Favourite Place. All rights reserved.</p>
         </div>
-    </footer>    
+    </footer>
 </div>
 
 {% endblock %}

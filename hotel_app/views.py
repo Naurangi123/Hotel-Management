@@ -97,7 +97,7 @@ def room_booking(request, hotel_id, room_id):
             booking = form.save(commit=False)
             booking.room = room
             booking.user = request.user
-            booking.check_in = timezone.now().date()
+            booking.check_in = datetime.now()
             booking.status = 'Confirmed'
             booking.save()
             messages.success(request, "Booking Successful!")

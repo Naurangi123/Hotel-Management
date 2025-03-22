@@ -8,6 +8,14 @@
     --card-shadow: rgba(0, 0, 0, 0.1);
 }
 
+body {
+    background: url("../images/paolo-nicolello.jpg");
+    background-repeat: no-repeat;
+    /* height: 700px !important; */
+    background-size: cover;
+    position: relative !important;
+}
+
 .book_container {
     width: 80%;
     margin: auto;
@@ -15,7 +23,7 @@
 }
 
 h1 {
-    color: #333;
+    color: #000000;
 }
 
 table {
@@ -65,4 +73,47 @@ th {
 
 .back-btn:hover {
     background-color: #218838;
+}
+
+
+/* home grid */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 20px;
+}
+
+.grid-container .full-span {
+    grid-column: span 3;
+}
+
+.grid-item {
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+.grid-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 2px;
+    transition: ease-in-out 0.4s;
+    &:hover{
+        transition: ease-in-out 0.1s;
+        cursor: pointer;
+        transform: scale(1.03);
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
