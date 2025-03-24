@@ -16,5 +16,9 @@ class RoomForm(forms.ModelForm):
     
 class BookRoomForm(forms.ModelForm):
     class Meta:
-        model=Booking
-        fields=['user','room','check_in']
+        model = Booking
+        fields = ['check_out', 'num_guests', 'special_requests']
+
+    check_out = forms.DateField(widget=forms.SelectDateWidget(), label='Check-out Date')
+    num_guests = forms.IntegerField(min_value=1, max_value=10, label='Number of Guests')
+    special_requests = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Any special requests? (Optional)'}), required=False)

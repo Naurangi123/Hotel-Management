@@ -29,7 +29,9 @@
         <h2>Rooms:</h2>
         {% if rooms|length == 0 %}
         <p>No rooms available at this hotel.</p>
+        {% if user.is_authenticated and user.is_superuser %}
         <a class="add-room" href="{% url 'add_room' hotel.id %}">Add Room</a>
+        {% endif %}
         {% else %}
         <div class="room-info">
             {% for room in rooms %}

@@ -73,12 +73,12 @@ nav {
 }
 
 .hotel {
-    background-color: #36e0688c;
-    width: 400px;
-    margin: 10px;
+    background-color: #a8aca9eb;
+    width: 450px;
+    margin: 8px;
     height: 80vh;
     border-radius: 8px;
-    box-shadow: 0 6px 10px rgba(121, 115, 115, 0.1);
+    box-shadow: 0 6px 10px rgba(88, 87, 87, 0.868);
     overflow: hidden;
     text-align: justify;
     transition: 0.2s ease-in-out;
@@ -187,7 +187,10 @@ a.room-available:hover {
 
 .hotel-container {
     display: flex;
-    margin: 20px;
+    margin: 10px;
+    background-color: gray;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .hotel-img img {
@@ -217,10 +220,9 @@ a.room-available:hover {
 
 .hotel-rooms {
     font-family: Arial, sans-serif;
-    padding: 20px;
-    background-color: #f4f4f4;
+    padding: 10px;
+    background-color: #747373;
     border-radius: 8px;
-    margin-top: 20px;
 }
 
 

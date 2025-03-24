@@ -13,7 +13,7 @@ class Hotel(models.Model):
     hotel_image = models.ImageField(upload_to='hotel_images/', default='hotel_images/default_image.jpg',null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return f"{self.name} - {self.address}"
 
 class Room(models.Model):
     hotel = models.ForeignKey(Hotel, related_name='rooms', on_delete=models.CASCADE)
@@ -28,13 +28,14 @@ class Room(models.Model):
 class Booking(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
-    check_in = models.DateField()
-    check_out = models.DateField(null=True, blank=True)
-    status = models.CharField(max_length=20, default="Pending")  # Pending, Confirmed, Cancelled
-    created_at = models.DateTimeField(auto_now_add=True)
-
+    check_in = models.DateTimeField()
+    check_out = models.DateField()
+    num_guests = models.PositiveIntegerField()
+    special_requests = models.TextField(blank=True, null=True)
+    status = models.CharField(max_length=20, choices=[('Confirmed', 'Confirmed'), ('Cancelled', 'Cancelled')])
+    
     def __str__(self):
-        return f"Booking by {self.user.username} for {self.room.room_type}"
+        return f"Booking for {self.user} in {self.room}"
 
 class Payment(models.Model):
     booking = models.OneToOneField(Booking, on_delete=models.CASCADE)

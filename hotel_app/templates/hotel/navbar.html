@@ -1,17 +1,23 @@
 {% block content %}
     <nav>
+        {% if user.is_authenticated %}
         <ul class="nav_links">
             <li><a href="{% url 'index' %}">Home</a></li>
             <li><a href="{% url 'hotel_list' %}">Hotels</a></li>
             <li><a href="{% url 'room_list' %}">Rooms</a></li>
+            <li><a href="{% url 'logout_view' %}">Logout</a></li>
             {% comment %}
             <li><a href="{% url 'settings' %}">Settings</a></li>
             {% endcomment %}
         </ul>
         <form action="{% url 'room_list' %}" method="POST" class="search_form">
             {% csrf_token %}
-            <input type="text" name="search" placeholder="Search Hotel...">
+            <input type="text" name="search" placeholder="Hotel Name or Location...">
             <input type="submit" value="Search">
         </form>
+        {% else %}
+        <li><a href="{% url 'login' %}">Login</a></li>
+        <li><a href="{% url 'register' %}">Register</a></li>
+        {% endif %}
     </nav>
 {% endblock %}

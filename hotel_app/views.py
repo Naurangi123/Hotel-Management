@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models import Avg
 from datetime import datetime
@@ -17,7 +18,7 @@ def hotel_list(request):
 def hotel_rooms(request):
     if request.method == 'POST':
         query = request.POST.get('search')
-        hotels = Hotel.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
+        hotels = Hotel.objects.filter(Q(name__icontains=query) | Q(address__icontains=query))
         return render(request, 'hotel/hotel_list.html', {'hotels': hotels})
     else:
         rooms=Room.objects.select_related('hotel').all()
@@ -49,6 +50,7 @@ def available_rooms(request, hotel_id=None):
     available_rooms = rooms.exclude(id__in=booked_rooms)
     return render(request, 'hotel/available_rooms.html', {'hotel': hotel, 'rooms': available_rooms})
 
+login_required
 def add_room(request, hotel_id):
     hotel = get_object_or_404(Hotel, id=hotel_id)
     if request.method == 'POST':
@@ -63,6 +65,8 @@ def add_room(request, hotel_id):
         form = RoomForm()
     return render(request, 'hotel/add_room.html', {'hotel': hotel, 'form': form})
 
+
+login_required
 def hotel_create(request):
     if request.method == 'POST':
         form = HotelForm(request.POST)
@@ -74,6 +78,8 @@ def hotel_create(request):
         form = HotelForm()
     return render(request, 'hotel/add_hotel.html', {'form': form})
 
+
+login_required
 def hotel_update(request, hotel_id):
     hotel = get_object_or_404(Hotel, id=hotel_id)
     if request.method == 'POST':
@@ -85,12 +91,15 @@ def hotel_update(request, hotel_id):
         form = HotelForm(instance=hotel)
     return render(request, 'hotel/edit_hotel.html', {'hotel': hotel, 'form': form})
 
+login_required
 def room_booking(request, hotel_id, room_id):
     hotel = get_object_or_404(Hotel, id=hotel_id)
     room = get_object_or_404(Room, id=room_id)
+    
     if Booking.objects.filter(room=room).exists():
         messages.error(request, "Sorry, this room is already booked.")
         return redirect('available_rooms', hotel_id=hotel.id)
+
     if request.method == 'POST':
         form = BookRoomForm(request.POST)
         if form.is_valid():
@@ -103,13 +112,15 @@ def room_booking(request, hotel_id, room_id):
             messages.success(request, "Booking Successful!")
             return redirect('booked_rooms')
     else:
-        form = BookRoomForm()
+        form = BookRoomForm() 
     return render(request, 'hotel/book_room.html', {'hotel': hotel, 'room': room, 'form': form})
+
 
 def booked_rooms(request):
     rooms = Booking.objects.select_related('room').all()
     return render(request, 'hotel/booked_room.html', {'rooms': rooms})
 
+login_required
 def check_out_room(request, room_id):
     try:
         booking = Booking.objects.get(room_id=room_id, status='Confirmed')
