@@ -29,7 +29,7 @@ class Booking(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     check_in = models.DateTimeField()
-    check_out = models.DateField()
+    check_out = models.DateTimeField(null=True, blank=True)
     num_guests = models.PositiveIntegerField()
     special_requests = models.TextField(blank=True, null=True)
     status = models.CharField(max_length=20, choices=[('Confirmed', 'Confirmed'), ('Cancelled', 'Cancelled')])

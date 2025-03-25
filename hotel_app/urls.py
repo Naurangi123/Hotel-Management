@@ -9,7 +9,7 @@ urlpatterns = [
     path('hotel/create/', views.hotel_create, name='hotel_create'),
     path('hotel/<int:hotel_id>/update/', views.hotel_update, name='hotel_update'),
     
-    path('hotel/<int:hotel_id>/rooms/', views.available_rooms, name='available_rooms'),
+    # path('hotel/<int:hotel_id>/rooms/', views.available_rooms, name='available_rooms'),
     path('hotel/<int:hotel_id>/room/add/', views.add_room, name='add_room'),
     
     path('hotel/<int:hotel_id>/room/<int:room_id>/book/', views.room_booking, name='room_booking'),
